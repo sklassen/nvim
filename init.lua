@@ -11,6 +11,9 @@ require('packer').startup(function(use)
   -- Colorscheme
   use 'joshdick/onedark.vim'
 
+  -- Tabs
+  use 'bagrat/vim-buffet'
+
   -- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -40,8 +43,8 @@ vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors = true
 pcall(vim.cmd, 'colorscheme onedark')
 
-local lsp = require('lsp-zero')
+-- local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
-lsp.setup()
+--lsp.preset('recommended')
+--lsp.setup()
 

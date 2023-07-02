@@ -10,5 +10,15 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 # In vi
 :PackerInstall
 
+# Fonts
+```
+mkdir /tmp/hf
+cd /tmp/hf
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+unzip Hack.zip
+mv *.ttf ~/.fonts
+fc-cache -fv
+```
 
+# Install LSP 
 :LspInstall

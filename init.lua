@@ -42,38 +42,22 @@ require('packer').startup(function(use)
       {'neovim/nvim-lspconfig'},
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
+      --{'hrsh7th/nvim-cmp'},
+      --{'hrsh7th/cmp-buffer'},
+      --{'hrsh7th/cmp-path'},
+      --{'saadparwaiz1/cmp_luasnip'},
+      --{'hrsh7th/cmp-nvim-lsp'},
+      --{'hrsh7th/cmp-nvim-lua'},
 
       -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
+      --{'L3MON4D3/LuaSnip'},
+      --{'rafamadriz/friendly-snippets'},
     }
   }
 
 end)
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-    -- Enable virtual text, override spacing to 4
-    virtual_text = {
-      spacing = 4,
-    },
-    -- Use a function to dynamically turn signs off
-    -- and on, using buffer local variables
-    signs = function(namespace, bufnr)
-      return vim.b[bufnr].show_signs == true
-    end,
-    -- Disable a feature
-    update_in_insert = false,
-  }
-)
+require("diagnostic")
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
@@ -143,14 +127,5 @@ lsp.setup()
 -- vim.opt.clipboard = "unnamedplus" 
 
 -- Key Mappings
-local keymap = vim.api.nvim_set_keymap
-local default_opts = { noremap = true, silent = true }
+require("keymap")
 
--- Switch buffer
-keymap("n", "<C-Left>", ":bprevious<CR>", default_opts)
-keymap("n", "<C-Right>", ":bnext<CR>", default_opts)
-keymap("n", "<C-Up>", ":NvimTreeToggle<CR>", default_opts)
-keymap("n", "<C-Down>", ":bdelete<CR>", default_opts)
-
--- Clear search history after esc
-keymap("n", "<Esc>", ":noh<CR><Esc>", default_opts)

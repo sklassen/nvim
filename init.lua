@@ -3,12 +3,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
-
-vim.g.ale_lint_on_text_changed = 'never'
-vim.g.ale_lint_on_insert_leave = 0
-vim.g.ale_lint_on_enter = 0
-vim.g.ale_fix_on_save = 1
-vim.g.ale_sign_column_always = 0
+vim.opt.signcolumn = 'no'
 
 vim.opt.mouse=none
 
@@ -113,7 +108,6 @@ require('lualine').setup {
   extensions = {}
 }
 
---vim.opt.signcolumn = 'yes'
 --vim.opt.termguicolors = true
 --pcall(vim.cmd, 'colorscheme onedark')
 

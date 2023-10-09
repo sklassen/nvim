@@ -123,3 +123,6 @@ lsp.setup()
 -- Key Mappings
 require("keymap")
 
+-- Rust Setup
+require("rust")
+

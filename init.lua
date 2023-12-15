@@ -7,6 +7,9 @@ vim.opt.signcolumn = 'no'
 
 vim.opt.mouse=none
 
+vim.g.mapleader=";"
+
+
 require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'

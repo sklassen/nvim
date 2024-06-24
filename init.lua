@@ -5,10 +5,9 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 vim.opt.signcolumn = 'no'
 
-vim.opt.mouse=none
+vim.opt.mouse=""
 
 vim.g.mapleader=";"
-
 
 require('packer').startup(function(use)
   -- Packer can manage itself

@@ -1,7 +1,8 @@
 # nvim
 
 cd ~/.config/
-git clone git@github.com:sklassen/nvim.git nvim
+git clone https://github.com/sklassen/nvim.git
+(or) git clone git@github.com:sklassen/nvim.git nvim
 
 
 # packer

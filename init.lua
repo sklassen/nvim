@@ -13,6 +13,7 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/nvim-tree/nvim-tree.lua',
   'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/romgrk/barbar.nvim',
   'https://github.com/nvim-lualine/lualine.nvim'
 })
 
@@ -27,7 +28,7 @@ vim.keymap.set('n', 'gK', function()
 
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
-vim.lsp.log.set_level('info')
+--vim.lsp.log.set_level('info')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.config('elp',{
 	diagnostics = {

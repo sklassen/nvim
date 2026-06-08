@@ -9,56 +9,44 @@ vim.opt.mouse=""
 
 vim.g.mapleader=";"
 
-require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+vim.pack.add({
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/nvim-tree/nvim-tree.lua',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/romgrk/barbar.nvim',
+  'https://github.com/nvim-lualine/lualine.nvim'
+})
 
-  -- Colorscheme
-  use 'joshdick/onedark.vim'
+-- Key Mappings
+require("keymap")
 
-  -- Tabs
-  --use 'bagrat/vim-buffet'
-  use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
-  use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
-  use 'romgrk/barbar.nvim'
+vim.keymap.set('n', 'gK', function()
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
+  local new_config = not vim.diagnostic.config().virtual_lines
+
+  vim.diagnostic.config({ virtual_lines = new_config })
+
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+--vim.lsp.log.set_level('info')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('elp',{
+	diagnostics = {
+		disabled = {
+			"W0017",
+			"W0030",
+			"W0031",
+			"W0032"
+		}
+	}})
+vim.lsp.enable('elp')
+
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true, 
   }
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons'}
-  }
+})
 
-  -- LSP
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    requires = {
-      -- LSP Support
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
-      {'neovim/nvim-lspconfig'},
-
-      -- Autocompletion
-      --{'hrsh7th/nvim-cmp'},
-      --{'hrsh7th/cmp-buffer'},
-      --{'hrsh7th/cmp-path'},
-      --{'saadparwaiz1/cmp_luasnip'},
-      --{'hrsh7th/cmp-nvim-lsp'},
-      --{'hrsh7th/cmp-nvim-lua'},
-
-      -- Snippets
-      --{'L3MON4D3/LuaSnip'},
-      --{'rafamadriz/friendly-snippets'},
-    }
-  }
-
-end)
-
-require("diagnostic")
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
@@ -113,22 +101,3 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
-
---vim.opt.termguicolors = true
---pcall(vim.cmd, 'colorscheme onedark')
-
-local lsp = require('lsp-zero')
-
-lsp.preset('recommended')
-lsp.setup()
-
--- Clipboard
--- vim.api.nvim_set_option("clipboard","unnamed")
--- vim.opt.clipboard = "unnamedplus" 
-
--- Key Mappings
-require("keymap")
-
--- Rust Setup
-require("rust")
-

@@ -1,15 +1,7 @@
 # nvim
 
 cd ~/.config/
-git clone https://github.com/sklassen/nvim.git
-(or) git clone git@github.com:sklassen/nvim.git nvim
-
-
-# packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# In vi
-:PackerInstall
+git clone git@github.com:sklassen/nvim.git nvim
 
 # Fonts
 ```
@@ -21,6 +13,8 @@ cp *.ttf ~/.local/share/fonts/
 cp *.ttf ~/.fonts
 fc-cache -fv
 ```
+Logout and in again. Change gnome font to Hack Nerd
 
-# Install LSP 
-:LspInstall
+# LSP
+rustup component add rust-analyzer
+
